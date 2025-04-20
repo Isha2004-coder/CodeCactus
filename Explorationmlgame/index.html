@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Color Classifier Game</title>
+  <style>
+    /* ── RESET & BASE ───────────────────────────────────────── */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #E8F5E9;
+      color: #1B5E20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* ── CARD CONTAINER (50% larger) ───────────────────────── */
+    .game-card {
+      background: #FFFFFF;
+      border-radius: 12px;                  /* was 8px */
+      box-shadow: 0 9px 27px rgba(0,0,0,0.1);/* was 6px/18px */
+      max-width: 630px;                     /* was 420px */
+      width: 100%;
+      padding: 42px;                        /* was 28px */
+      text-align: center;
+    }
+    .game-card h1 {
+      font-size: 2.625rem;                  /* was 1.75rem */
+      margin-bottom: 12px;                  /* was 8px */
+      color: #2E7D32;
+    }
+    .game-card p {
+      font-size: 1.2rem;                    /* was 0.8rem */
+      opacity: 0.8;
+      margin-bottom: 30px;                  /* was 20px */
+    }
+
+    /* ── FLEX BODY FOR COLOR + CONTROLS ────────────────────── */
+    .game-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;                            /* was 24px */
+      flex-wrap: wrap;
+    }
+
+    /* ── COLOR DISPLAY ─────────────────────────────────────── */
+    #colorBox {
+      width: 225px;                         /* was 150px */
+      height: 225px;                        /* was 150px */
+      border: 5px solid #ccc;               /* was 3px */
+      border-radius: 9px;                   /* was 6px */
+      background-color: #fff;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+      transition: background-color 0.3s;
+    }
+
+    /* ── CONTROLS COLUMN ───────────────────────────────────── */
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;                            /* was 12px */
+      width: 180px;                         /* was 120px */
+    }
+    .controls button,
+    .controls select {
+      font-size: 1.2rem;                    /* was 0.8rem */
+      padding: 12px 15px;                   /* was 8px 10px */
+      border-radius: 9px;                   /* was 6px */
+      border: 2px solid #2E7D32;
+      background: #fff;
+      color: #2E7D32;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+    .controls button:hover,
+    .controls select:hover {
+      background: #2E7D32;
+      color: #fff;
+    }
+    .controls select {
+      appearance: none;
+      -webkit-appearance: none;
+      text-align: center;
+    }
+
+    /* ── RESULT TEXT ──────────────────────────────────────── */
+    #result {
+      font-size: 1.5rem;                    /* was 1rem */
+      font-weight: 500;
+      min-height: 1.8em;                    /* was 1.2em */
+      margin-top: 18px;                     /* was 12px */
+    }
+  </style>
+</head>
+<body>
+  <div class="game-card">
+    <h1>Warm vs Cool Color Classifier</h1>
+    <p>Label random colors as “Warm” or “Cool” to train the model, then test its prediction.</p>
+
+    <div class="game-body">
+      <div id="colorBox"></div>
+
+      <div class="controls">
+        <button id="newColor">New Color</button>
+        <select id="label">
+          <option value="Warm">Warm</option>
+          <option value="Cool">Cool</option>
+        </select>
+        <button id="add">Add Example</button>
+        <button id="train">Train</button>
+        <button id="predict">Predict</button>
+      </div>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // state
+    const examples = [];
+    let model = { xs: [], ys: [] };
+
+    // DOM
+    const box   = document.getElementById("colorBox"),
+          newC  = document.getElementById("newColor"),
+          add   = document.getElementById("add"),
+          train = document.getElementById("train"),
+          pred  = document.getElementById("predict"),
+          label = document.getElementById("label"),
+          res   = document.getElementById("result");
+    let currentRGB;
+
+    // random color generator
+    function randColor() {
+      const r = Math.floor(Math.random() * 256),
+            g = Math.floor(Math.random() * 256),
+            b = Math.floor(Math.random() * 256);
+      box.style.backgroundColor = `rgb(${r},${g},${b})`;
+      return [r, g, b];
+    }
+
+    // simple k=3 KNN
+    function predictColor(rgb) {
+      const dists = model.xs.map((x, i) => {
+        const d = Math.hypot(x[0]-rgb[0], x[1]-rgb[1], x[2]-rgb[2]);
+        return { d, label: model.ys[i] };
+      });
+      dists.sort((a,b) => a.d - b.d);
+      const vote = {};
+      dists.slice(0,3).forEach(p => {
+        vote[p.label] = (vote[p.label]||0) + 1;
+      });
+      return Object.entries(vote).sort((a,b) => b[1]-a[1])[0][0];
+    }
+
+    // events
+    newC.onclick = () => {
+      currentRGB = randColor();
+      res.textContent = "";
+    };
+    add.onclick = () => {
+      examples.push({ rgb: currentRGB, lab: label.value });
+      res.textContent = `Example added: ${label.value}`;
+    };
+    train.onclick = () => {
+      model.xs = examples.map(e=>e.rgb);
+      model.ys = examples.map(e=>e.lab);
+      res.textContent = `Trained on ${model.ys.length} examples.`;
+    };
+    pred.onclick = () => {
+      if (!model.xs.length) {
+        res.textContent = "Please train first!";
+        return;
+      }
+      const guess = predictColor(currentRGB);
+      res.textContent = `I predict: ${guess}`;
+    };
+
+    // init
+    newC.click();
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Login | Desert CodeSprouts</title>
+  <link rel="stylesheet" href="auth-style.css"/>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAZeGoGJGGgNwQM_1ANiIxw-1sUabgL97o",
+      authDomain: "code-sprouts-a9ecf.firebaseapp.com",
+      projectId: "code-sprouts-a9ecf",
+      storageBucket: "code-sprouts-a9ecf.firebasestorage.app",
+      messagingSenderId: "299673351094",
+      appId: "1:299673351094:web:a6e1b26fe7a62a3af74717"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Login to Desert CodeSprouts</h2>
+    <form id="loginForm">
+      <label for="email">Email</label>
+      <input type="email" id="email" required placeholder="Enter your email"/>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required placeholder="Enter your password"/>
+
+      <p id="login-error" style="color:red; font-size:0.9rem;"></p>
+
+      <button type="submit">Login</button>
+
+      <div class="forgot" style="margin-top:10px;">
+        <a href="#" onclick="sendResetEmail(); return false;">Forgot Password?</a>
+      </div>
+
+      <p class="switch" style="margin-top:15px;">
+        Don't have an account? <a href="register.html">Register here</a>
+      </p>
+    </form>
+  </div>
+
+  <script>
+    // Login handling
+    document.getElementById('loginForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email    = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const errorEl  = document.getElementById('login-error');
+      errorEl.textContent = '';
+
+      try {
+        await auth.signInWithEmailAndPassword(email, password);
+        // Redirect to the new dashboard page
+        window.location.href = "dashboard.html";
+      } catch (err) {
+        errorEl.textContent = err.message;
+      }
+    });
+
+    // Forgot‑password uses the email field
+    function sendResetEmail() {
+      const emailInput = document.getElementById('email');
+      const email      = emailInput.value.trim();
+      const errorEl    = document.getElementById('login-error');
+      errorEl.textContent = '';
+
+      if (!email) {
+        errorEl.textContent = "❌ Please enter your email above.";
+        emailInput.focus();
+        return;
+      }
+      auth.sendPasswordResetEmail(email)
+        .then(() => alert("📧 Password reset link sent to " + email))
+        .catch(err => errorEl.textContent = "❌ " + err.message);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Phishing Detective - Cactus Edition 🌵</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="game-container">
+      <h1>
+        🕵️‍♂️ Phishing Detective: <br />
+        Spot the Phish 🌵
+      </h1>
+
+      <!-- Email Number -->
+      <div id="email-number">
+        <p>Email #: <span id="level">1</span></p>
+      </div>
+
+      <div id="flag-palette">
+        <img
+          src="https://img.icons8.com/color/48/000000/filled-flag.png"
+          draggable="true"
+          id="flag"
+          alt="red flag"
+        />
+        <p>Drag the red flag to suspicious parts of the email.</p>
+      </div>
+
+      <!-- Email Content -->
+      <div id="email-display"></div>
+
+      <!-- Feedback -->
+      <div id="feedback"></div>
+
+      <!-- Scoreboard -->
+      <div id="scoreboard">
+        <p>Score: <span id="score">0</span></p>
+      </div>
+
+      <!-- Action Buttons -->
+      <button id="submit-btn" style="display: none; margin: 20px auto">
+        Submit Flags
+      </button>
+      <button id="try-again-btn" style="display: none">Try Again</button>
+      <button id="see-correct-btn" style="display: none">
+        See Correct Answer
+      </button>
+      <button id="next-email-btn" style="display: none">Next Email</button>
+
+      <!-- Completion Message -->
+      <div id="completion-message" style="display: none">
+        <h2>🎉 Congratulations! You've completed the level! 🎉</h2>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

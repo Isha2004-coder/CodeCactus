@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* HERO CONTAINER */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+
+  /* center content vertically & horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FULL‑SCREEN BACKGROUND IMAGE */
+.hero-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ANIMATED GRADIENT OVERLAY */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    -45deg,
+    #c3d9d8,
+    #9bdd9d,
+    #c3f5c8,
+    #bbeabd
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 5s ease infinite;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* GRADIENT ANIMATION */
+@keyframes gradientMove {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* BRING HERO CONTENT ABOVE LAYERS */
+.top-right-buttons,
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* LOGIN / REGISTER BUTTONS */
+.top-right-buttons {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}
+.top-right-buttons a {
+  margin-left: 15px;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.btn {
+  background-color: transparent;
+  border: 2px solid #388e3c;
+  color: #388e3c;
+}
+.btn:hover {
+  background-color: #388e3c;
+  color: white;
+}
+.register {
+  background-color: #2e7d32;
+  border: none;
+  color: white;
+}
+.register:hover {
+  background-color: #66bb6a;
+}
+
+/* HERO TEXT BLOCK */
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #1b5e20;
+}
+.logo {
+  font-size: 3rem;
+  color: #2e7d32;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px #a5d6a7;
+}
+.hero-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.hero-content p {
+  font-size: 1.2rem;
+  color: #33691e;
+}
+
+/* FLASHCARD GRID */
+.category-cards {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 40px;
+  gap: 40px;
+}
+
+/* FLASHCARD STYLING */
+.card {
+  width: 350px;
+  height: 400px;
+  perspective: 1200px;
+  cursor: default;
+}
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 12px;
+}
+.card:hover .card-inner,
+.card:focus .card-inner {
+  transform: rotateY(180deg);
+}
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  color: #1b5e20;
+  background: #b9efbf;
+}
+.card-front h2 {
+  margin-bottom: 8px;
+  font-size: 1.6rem;
+}
+.card-front p {
+  font-size: 1.6rem;
+  opacity: 0.8;
+}
+.card-back {
+  transform: rotateY(180deg);
+  background: #dbfae0;
+}
+.card-back p {
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.start-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #66bb6a;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 3;
+}
+.start-btn:hover {
+  background-color: #57a05a;
+}
+
+/* ENSURE FLASHCARDS ABOVE GRADIENT */
+.dashboard, .category-cards, .card {
+  position: relative;
+  z-index: 2;
+}
+
+/* DASHBOARD TITLE STYLING */
+.dashboard h1 {
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 60px;
+  color: #161c17;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* DASHBOARD ANIMATED GRADIENT BACKGROUND */
+.dashboard {
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: linear-gradient(
+    -45deg,
+    #d8e6ef,
+    #9bdd9d,
+    #b9efbf,
+    #c5fac7
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 4s ease infinite;
+}
+
+/* TYPEWRITER EFFECT FOR DASHBOARD TITLE */
+#dashboard-title {
+  display: inline-block;
+  font-size: 4rem;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid #2e7d32;
+  margin-bottom: 60px;
+  animation: blinkCursor 1s step-end infinite;
+}
+
+/* BLINKING CURSOR */
+@keyframes blinkCursor {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #2e7d32;
+
+  }
+}
+
+/* ── DASHBOARD BACK BUTTON ──────────────────────────────────────── */
+.dashboard {
+    position: relative;  /* ensure the button can be absolutely positioned */
+  }
+  
+  .back-button {
+    position: absolute;
+    top: 20px;           /* adjust distance from top */
+    left: 20px;          /* adjust distance from left */
+    z-index: 3;          /* above the gradient & content */
+  }
+  
+  .btn-back {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #2E7D32;                /* same accent green */
+    background: transparent;
+    border: 2px solid #2E7D32;     /* same accent green */
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  .btn-back:hover {
+    background: #2E7D32;           /* fill with accent on hover */
+    color: white;                  /* white text on hover */
+  }
+  

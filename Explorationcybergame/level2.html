@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Phishing Detective - Level 2 🌵</title>
+  <link rel="stylesheet" href="level2.css" />
+</head>
+<body>
+  <!-- Modal Pop-up -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <h2>Welcome to Level 2! 🌵</h2>
+      <p>
+        In this level, you'll see a series of email images. Your job is to
+        decide if the email is legitimate or a phishing attempt. Choose
+        wisely!
+      </p>
+      <button id="start-btn">Start Level 2</button>
+    </div>
+  </div>
+
+  <!-- Game Container -->
+  <div id="game-container" style="display: none">
+    <h1>Phishing Detective: Level 2 🌵</h1>
+
+    <div id="email-number">
+      <p>Email #: <span id="level">1</span></p>
+    </div>
+
+    <div id="email-display"></div>
+    <div id="feedback"></div>
+
+    <div id="scoreboard">
+      <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <button id="green-flag-btn">🟢 Green Flag</button>
+    <button id="red-flag-btn">🚩 Red Flag</button>
+    <button id="try-again-btn" style="display: none">🔁 Try Again</button>
+  </div>
+
+  <!-- Completion Screen -->
+  <div id="completion-screen" style="display: none" class="completion-screen">
+    <div class="completion-content">
+      <h1>🎉 Congratulations! 🎉</h1>
+      <p>You've successfully completed <strong>both levels</strong> of the Phishing Detective game!</p>
+
+      <button id="play-again-btn" onclick="window.location.href='index.html'">
+        🔁 Play Again
+      </button>
+
+      <!-- Only ONE back button here -->
+      <button class="home-btn" onclick="window.location.href='../../exploration.html'">
+        🏠 Back to Exploration
+      </button>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="level2.js"></script>
+
+  <!-- Button styling -->
+  <style>
+    .home-btn {
+      margin-top: 15px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #2E7D32;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .home-btn:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</body>
+</html>

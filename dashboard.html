@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Dashboard | Desert CodeSprouts</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="dashboard">
+    <div class="back-button">
+        <a href="about.html" class="btn-back">← Home</a>
+      </div>  
+    <!-- Typewriter Title -->
+    <h1 id="dashboard-title"></h1>
+
+    <!-- Flashcard Categories -->
+    <div class="category-cards">
+      
+      <!-- DISCOVERY CARD -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <h2>🌱 Discovery</h2>
+            <p>(K-3)</p>
+          </div>
+          <div class="card-back">
+            <p>Fun games &amp; stories to spark curiosity!</p>
+            <a href="discovery.html" class="start-btn">Start →</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- EXPLORATION CARD -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <h2>🌿 Exploration</h2>
+            <p>(4-8)</p>
+          </div>
+          <div class="card-back">
+            <p>Hands-on coding challenges &amp; design tasks!</p>
+            <a href="exploration.html" class="start-btn">Start →</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- INNOVATION CARD -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-front">
+            <h2>🌵 Innovation</h2>
+            <p>(9-12)</p>
+          </div>
+          <div class="card-back">
+            <p>Build real web apps, ML demos &amp; security labs!</p>
+            <a href="innovation.html" class="start-btn">Start →</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Typewriter Script (unchanged) -->
+  <script>
+    const text = "Choose Your Adventure";
+    let idx = 0;
+    const speed = 100;
+    function typeWriter() {
+      if (idx < text.length) {
+        document.getElementById("dashboard-title").textContent += text.charAt(idx++);
+        setTimeout(typeWriter, speed);
+      }
+    }
+    window.addEventListener("DOMContentLoaded", typeWriter);
+  </script>
+</body>
+</html>

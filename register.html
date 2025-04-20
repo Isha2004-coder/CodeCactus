@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Register | Desert CodeSprouts</title>
+  <link rel="stylesheet" href="auth-style.css"/>
+
+  <!-- 1. Load Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+
+  <!-- 2. Initialize Firebase -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAZeGoGJGGgNwQM_1ANiIxw-1sUabgL97o",
+      authDomain: "code-sprouts-a9ecf.firebaseapp.com",
+      projectId: "code-sprouts-a9ecf",
+      storageBucket: "code-sprouts-a9ecf.firebasestorage.app",
+      messagingSenderId: "299673351094",
+      appId: "1:299673351094:web:a6e1b26fe7a62a3af74717"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Create an Account</h2>
+    <form id="registerForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" required placeholder="Your full name"/>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" required placeholder="Choose a username"/>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" required placeholder="Enter your email"/>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required placeholder="Create a password"/>
+
+      <label for="confirm">Confirm Password</label>
+      <input type="password" id="confirm" required placeholder="Confirm password"/>
+
+      <p id="error-message" style="color:red; font-size:0.9rem;"></p>
+
+      <button type="submit">Register</button>
+      <p class="switch">
+        Already have an account? <a href="login.html">Login here</a>
+      </p>
+    </form>
+  </div>
+
+  <script>
+    // 3. Handle form submit
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const name     = document.getElementById('name').value.trim();
+      const email    = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const confirm  = document.getElementById('confirm').value;
+      const errorMsg = document.getElementById('error-message');
+
+      // 4. Password match
+      if (password !== confirm) {
+        errorMsg.textContent = "❌ Passwords do not match.";
+        return;
+      }
+      errorMsg.textContent = "";
+
+      try {
+        // 5. Create user in Firebase
+        const userCred = await auth.createUserWithEmailAndPassword(email, password);
+        // 6. Set displayName to Full Name
+        await userCred.user.updateProfile({ displayName: name });
+        // (Optional) You could store username in Firestore here
+
+        alert("✅ Account created!");
+        window.location.href = "login.html";
+      } catch (err) {
+        errorMsg.textContent = err.message;
+      }
+    });
+  </script>
+</body>
+</html>

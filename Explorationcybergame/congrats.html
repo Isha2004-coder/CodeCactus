@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎉 Level 1 Complete!</title>
+    <link rel="stylesheet" href="congrats.css" />
+  </head>
+  <body>
+    <div class="congrats-container">
+      <img
+        src="https://img.icons8.com/emoji/96/cactus-emoji.png"
+        alt="Cactus"
+      />
+      <h1>🌵 Congratulations! You completed Level 1!</h1>
+      <p>
+        You've successfully flagged all phishing emails. Your cactus detective
+        skills are blooming! 🌼
+      </p>
+      <audio id="drumroll-sound" src="sounds/drumroll.mp3"></audio>
+      <script>
+        // Play the drumroll sound when the page loads
+        const drumrollSound = document.getElementById("drumroll-sound");
+        drumrollSound.play();
+
+        // Optionally, you can also add some delay to play the sound at a specific time, like after 2 seconds
+        // setTimeout(() => {
+        //   drumrollSound.play();
+        // }, 2000); // 2 seconds delay before playing the sound
+      </script>
+      <button onclick="window.location.href='level2.html'">
+        🌟 Let's Start Level 2
+      </button>
+    </div>
+  </body>
+</html>

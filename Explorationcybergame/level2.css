@@ -1,0 +1,188 @@
+/* Basic styles for body and text */
+body {
+  font-family: Arial, sans-serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("cacti.jpg"); /* Replace with your cactus-themed background image */
+  background-size: cover;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+  color: #4caf50; /* Ensure text is visible against the background */
+}
+h1 {
+  color: #388e3c;
+}
+
+#email-number {
+  color: black;
+}
+/* Styling for the modal (pop-up) */
+.popup {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+  color: #333;
+}
+
+#start-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+#start-btn:hover {
+  background-color: #45a049;
+}
+
+/* Styling for the game container */
+#game-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: none; /* Hidden initially, will be shown after modal */
+  position: relative;
+}
+
+#email-display {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.4
+  ); /* White background with transparency */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Styling for the email images */
+.email-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styling */
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 25px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Feedback section */
+#feedback {
+  font-size: 20px;
+  margin-top: 15px;
+  color: #333;
+}
+
+/* Styling for the scoreboard */
+#scoreboard {
+  font-size: 20px;
+  margin-top: 20px;
+  color: #333;
+}
+
+#completion-screen {
+  text-align: center;
+  display: none;
+  background-color: white; /* Light yellow background */
+  padding: 30px;
+  border-radius: 12px;
+  font-size: 1.2em;
+  max-width: 600px;
+  margin: 60px auto;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border: 2px dashed #6cbd7e; /* cactus green border */
+}
+
+#completion-screen h1 {
+  font-size: 2em;
+  color: #388e3c;
+  margin-bottom: 10px;
+}
+
+#completion-screen p {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#completion-screen button {
+  margin: 10px;
+  padding: 12px 24px;
+  font-size: 1em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+#completion-screen button:hover {
+  background-color: #388e3c;
+}
+
+/* Hide background when the completion screen is displayed */
+#completion-screen:target {
+  background-image: none; /* This will make the background disappear */
+  background-color: #fffae5;
+}
+
+#home-btn {
+  margin-top: 15px;
+  padding: 12px 24px;
+  font-size: 1em;
+  border: none;
+  background-color: #00796b;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#home-btn:hover {
+  background-color: #004d40;
+}
+#feedback {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #388e3c; /* Green color for success */
+  text-align: center;
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About Color Classifier | Desert CodeSprouts</title>
+  <link rel="stylesheet" href="modules-style.css"/>
+  <style>
+    :root {
+      --accent:    #2E7D32;
+      --bg-card:   #FFFFFF;
+      --bg-light:  #E8F5E9;
+      --text-dark: #1B5E20;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+    .modules-hero {
+      position: relative;
+      padding: 40px 20px;
+      text-align: center;
+      background: linear-gradient(-45deg, #E0F2F1, #9BDD9D, #D2EED5);
+      background-size: 400% 400%;
+      animation: gradientMove 6s ease infinite;
+    }
+    .modules-hero .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+    }
+    .modules-hero .btn-back {
+      padding: 8px 16px;
+      border: 2px solid var(--accent);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--accent);
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+    .modules-hero .btn-back:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+    @keyframes gradientMove {
+      0%   { background-position:   0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position:   0% 50%; }
+    }
+
+    #intro-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .game-card {
+      background: var(--bg-card);
+      border: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 30px 20px;
+      max-width: 600px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+      margin-bottom: 20px;
+    }
+    .game-card:hover {
+      transform: translateY(-5px);
+    }
+    .game-card h2 {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    .game-card p {
+      font-size: 1rem;
+      line-height: 1.5;
+      opacity: 0.85;
+    }
+    .instructions {
+      margin-top: 30px;
+      max-width: 600px;
+      text-align: left;
+      color: var(--text-dark);
+    }
+    .instructions h3 {
+      font-size: 1.3rem;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .instructions ul {
+      list-style: disc inside;
+    }
+    .instructions li {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .start-container {
+      margin-top: 30px;
+    }
+    .start-btn {
+      padding: 14px 32px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #66bb6a, #2e7d32);
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .start-btn:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+    }
+
+    #game-frame {
+      display: none;
+      width: 90%;
+      max-width: 800px;
+      height: 600px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin: 40px auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header with back button -->
+  <header class="modules-hero">
+    <div class="back-button">
+      <a href="exploration.html" class="btn-back">← Back to Exploration</a>
+    </div>
+  </header>
+
+  <!-- Intro/About section -->
+  <main id="intro-container">
+    <div class="game-card">
+      <h2>About the Color Classifier</h2>
+      <p>
+        The Color Classifier game teaches the basics of supervised learning
+        by letting students label randomly generated colors as “Warm” or “Cool,”
+        train a simple k-Nearest Neighbors model, and then test its predictions
+        on new colors.
+      </p>
+    </div>
+
+    <div class="instructions">
+      <h3>How to Play</h3>
+      <ul>
+        <li>Click <strong>New Color</strong> to generate a random RGB color.</li>
+        <li>Select <strong>Warm</strong> or <strong>Cool</strong> from the dropdown.</li>
+        <li>Click <strong>Add Example</strong> to save your label.</li>
+        <li>After several examples, click <strong>Train</strong> to build the model.</li>
+        <li>Finally, click <strong>Predict</strong> to see whether the model
+            classifies the current color as Warm or Cool.</li>
+      </ul>
+    </div>
+
+    <div class="start-container">
+      <button id="start-btn" class="start-btn">Let’s Get Started!</button>
+    </div>
+  </main>
+
+  <!-- Hidden iframe for the actual game -->
+  <iframe
+    id="game-frame"
+    src="Explorationmlgame/index.html"
+    title="Color Classifier Game">
+  </iframe>
+
+  <!-- Reveal game iframe on button click -->
+  <script>
+    document.getElementById('start-btn').addEventListener('click', () => {
+      document.getElementById('intro-container').style.display = 'none';
+      const frame = document.getElementById('game-frame');
+      frame.style.display = 'block';
+      frame.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

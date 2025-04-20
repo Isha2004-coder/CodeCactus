@@ -1,0 +1,203 @@
+/* General Body Styles */
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("cactus1.jpg");
+  display: inline-block;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  background-repeat: no-repeat;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  flex-direction: column;
+}
+
+/* Game Container */
+#game-container {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  width: 500px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Title Styling */
+h1 {
+  font-size: 1.8em;
+  color: #388e3c; /* Green color to match the theme */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Email Number Display */
+#email-number {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Flag Palette */
+#flag-palette {
+  margin-bottom: 20px;
+}
+
+/* Flag Styling */
+#flag {
+  width: 40px;
+  cursor: grab;
+  margin: 0 10px;
+}
+
+/* Email Display Area */
+#email-display {
+  border: 2px dashed #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  background: #fdfdfd;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 1.1em;
+}
+
+/* Droppable Areas for Flagging */
+.droppable {
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 4px;
+  margin: 0 3px;
+  background-color: #f5f5f5;
+  border: 1px dotted transparent;
+  transition: background 0.3s ease;
+}
+
+/* Flagged Droppable Areas */
+.flagged {
+  background-color: #ffe5e5; /* Light red background for flagged areas */
+  border: 2px solid #e53935; /* Dark red border for emphasis */
+}
+
+/* Button Styling */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  margin: 10px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Different Button Colors for Actions */
+#submit-btn {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+#try-again-btn {
+  background-color: #f44336;
+  color: #fff;
+}
+
+#see-correct-btn {
+  background-color: #ff9800;
+  color: #fff;
+}
+
+#next-email-btn {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+/* Completion Message */
+#completion-message {
+  text-align: center;
+  display: none;
+  background-color: #fffae5; /* Light yellow background */
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.2em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#completion-message h2 {
+  margin-bottom: 10px;
+  font-size: 1.6em;
+  color: #388e3c;
+}
+
+/* Cactus Styling - Cute elements for fun */
+.cactus {
+  width: 80px;
+  height: 80px;
+  background-color: #32cd32; /* Lime green */
+  border-radius: 50%;
+  position: relative;
+  margin-top: 20px;
+}
+
+.cactus:before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #228b22; /* Forest green */
+  border-radius: 50%;
+}
+
+.cactus:after {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 40px;
+  width: 20px;
+  height: 20px;
+  background-color: #228b22;
+  border-radius: 50%;
+}
+
+/* Adjusting text feedback */
+#feedback {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Hiding elements initially */
+#try-again-btn,
+#see-correct-btn,
+#next-email-btn {
+  display: none;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  #game-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  #email-number {
+    font-size: 1em;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}

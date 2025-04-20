@@ -1,0 +1,60 @@
+/* Base styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fdfcf7; /* Light sandy background like desert */
+  color: #2f4f4f;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main container */
+.congrats-container {
+  text-align: center;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 2px dashed #6cbd7e; /* cactus green border */
+}
+
+/* Image */
+.congrats-container img {
+  margin-bottom: 1rem;
+}
+
+/* Heading */
+.congrats-container h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #3d9970; /* cactus green */
+}
+
+/* Paragraph */
+.congrats-container p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #4a4a4a;
+}
+
+/* Button */
+.congrats-container button {
+  background-color: #6cbd7e;
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.congrats-container button:hover {
+  background-color: #5aaa6d;
+  transform: scale(1.05);
+}

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Design Game | Desert CodeSprouts</title>
+  <link rel="stylesheet" href="modules-style.css"/>
+  <style>
+    :root {
+      --accent:    #2E7D32;
+      --bg-card:   #FFFFFF;
+      --bg-light:  #E8F5E9;
+      --text-dark: #1B5E20;
+    }
+
+    /* Main intro area */
+    .game-intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      background: var(--bg-light);
+      text-align: center;
+      min-height: calc(100vh - 120px);
+    }
+
+    /* Steady border flashcard */
+    .game-card {
+      background: var(--bg-card);
+      border: 4px solid var(--accent);
+      border-radius: 12px;
+      padding: 30px 20px;
+      max-width: 600px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .game-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Preview screenshot placeholder */
+    .game-preview {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .game-card h2 {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    .game-card p {
+      font-size: 1rem;
+      line-height: 1.5;
+      opacity: 0.85;
+      margin-bottom: 25px;
+    }
+
+    /* Separate Start Button Container */
+    .start-container {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    /* Customized Start Button */
+    .start-container .start-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #66bb6a, #2e7d32);
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .start-container .start-btn:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Getting Started tips */
+    .tips {
+      margin-top: 40px;
+      max-width: 600px;
+      text-align: left;
+      color: var(--text-dark);
+    }
+    .tips h3 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+    .tips ul {
+      list-style: disc inside;
+    }
+    .tips ul li {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="modules-hero">
+    <div class="back-button">
+      <a href="exploration.html" class="btn-back">← Back to Exploration</a>
+    </div>
+  </header>
+
+  <main class="game-intro" id="intro-container">
+    <div class="game-card">
+      <h2>🌵 Design Game 🌵</h2>
+      <p>
+        Welcome to the Design Game! Help the cactus achieve its desired webpage design by dragging and dropping HTML and JavaScript tags into the correct spots. 
+        Learn how code structures create beautiful, functional websites!
+      </p>
+    </div>
+
+    <div class="start-container">
+      <a href="Explorationuigame/index.html" class="start-btn">Let's Get Started!</a>
+    </div>
+
+    <div class="tips">
+      <h3>Getting Started</h3>
+      <ul>
+        <li>Drag HTML and JavaScript tags into their correct locations.</li>
+        <li>Ensure each tag matches the cactus's design requirements.</li>
+        <li>Complete stages to earn “Cactus Coder” badges.</li>
+        <li>Combine tags creatively to discover new design features.</li>
+      </ul>
+    </div>
+  </main>
+</body>
+</html>
